@@ -1,12 +1,22 @@
 module.exports = {
-  mode: 'jit',
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  mode: "jit",
+  purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    fontFamily: {
+      main: ["Poppins"],
+    },
+    extend: {
+      colors: {
+        "main-blue": "#28536B",
+        "main-purple": "#9312C1",
+        "main-orange": "#EFB551",
+        "main-yellow": "#FFFF06",
+      },
+    },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
-}
+  plugins: [require("tailwindcss-children")],
+};

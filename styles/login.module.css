@@ -1,0 +1,76 @@
+.container {
+  @apply w-full h-screen min-h-[900px]  flex justify-between;
+}
+
+.left_container {
+  @apply w-full lg:w-[600px]  bg-main-blue self-stretch px-[40px] md:px-[120px] pt-[100px] flex flex-col;
+}
+
+.right_container {
+  @apply bg-main-orange self-stretch flex-1 relative  items-center justify-center px-[40px] overflow-hidden hidden lg:flex;
+  video:hover {
+    @apply shadow-2xl cursor-pointer;
+  }
+}
+
+.logo {
+  @apply text-white text-5xl font-bold;
+}
+
+.form {
+  @apply flex flex-col mt-[100px] space-y-[40px] items-center;
+}
+
+.inputLabel,
+.password_inputs {
+  input:focus {
+    outline: #efb551 2px solid !important;
+  }
+}
+
+.inputLabel {
+  @apply flex justify-between text-white items-center w-full;
+  .label {
+    @apply text-xl font-semibold;
+  }
+  .input {
+    @apply w-[70%] h-[40px] relative;
+    input {
+      @apply border-none outline-none rounded-lg flex h-full w-full px-[20px]  text-black  text-base font-main font-semibold;
+      transition: outline 0.3s;
+    }
+  }
+}
+
+.password_inputs {
+  @apply flex space-x-12  !mt-[100px] justify-between w-full;
+  .passwordLabel {
+    @apply flex flex-col space-y-2;
+    label {
+      @apply text-white text-lg font-semibold flex items-center gap-x-2 relative;
+      .sifreToolTip {
+        @apply absolute w-full bg-gray-500 rounded-xl px-2 py-3 top-[-70px] transition duration-500 delay-200 select-none;
+      }
+    }
+    input {
+      @apply w-full px-[10px] h-[40px] outline-none rounded-xl font-main text-xl font-semibold;
+      transition: outline 0.3s;
+    }
+  }
+}
+
+.buttons {
+  @apply flex flex-col space-y-[30px] !mt-[100px];
+  button {
+    @apply text-center text-2xl px-[50px] py-[10px] rounded-lg transform hover:scale-105 hover:shadow-lg transition;
+  }
+  .girisButton {
+    @apply border-main-orange border-2 text-white;
+  }
+  .yenikayitButton {
+    @apply bg-main-orange text-main-blue;
+  }
+  span {
+    @apply text-center text-white underline cursor-pointer hover:text-main-orange;
+  }
+}
