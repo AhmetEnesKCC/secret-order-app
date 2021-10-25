@@ -1,9 +1,9 @@
 .container {
-  @apply w-full h-screen min-h-[900px]  flex justify-between;
+  @apply w-full h-screen min-h-screen lg:min-h-[900px]  flex justify-between;
 }
 
 .left_container {
-  @apply w-full lg:w-[600px]  bg-main-blue self-stretch px-[40px] md:px-[120px] pt-[100px] flex flex-col;
+  @apply w-full lg:w-[600px]  bg-main-blue self-stretch px-[40px] md:px-[120px] pt-[20px] lg:pt-[100px] flex flex-col;
 }
 
 .right_container {
@@ -18,7 +18,7 @@
 }
 
 .form {
-  @apply flex flex-col mt-[100px] space-y-[40px] items-center;
+  @apply flex flex-col mt-[60px] lg:mt-[100px] space-y-[40px] items-center;
 }
 
 .inputLabel,
@@ -43,7 +43,7 @@
 }
 
 .password_inputs {
-  @apply flex space-x-12  !mt-[100px] justify-between w-full;
+  @apply flex space-x-12 mt-[20px]  lg:!mt-[100px] justify-between w-full;
   .passwordLabel {
     @apply flex flex-col space-y-2;
     label {
