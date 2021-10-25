@@ -7,6 +7,7 @@ import Parallax from "../../providers/parallax";
 
 const SignUp = () => {
   const [sifreToolTip, setSifreTooltip] = useState(false);
+  const [tooltipClicked, setToolTipClicked] = useState(false);
   const [formDatas, setFormDatas] = useState({
     email: "",
     password1: "",
@@ -32,7 +33,13 @@ const SignUp = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      onClick={(e) => {
+        setToolTipClicked(false);
+        setSifreTooltip(false);
+      }}
+    >
       <div className={styles.left_container}>
         <div className={styles.logo}>Logo</div>
         <form className={styles.form} onSubmit={handleSubmit}>
@@ -74,7 +81,15 @@ const SignUp = () => {
                     setSifreTooltip(true);
                   }}
                   onMouseLeave={() => {
-                    setSifreTooltip(false);
+                    if (!tooltipClicked) {
+                      setSifreTooltip(false);
+                    }
+                  }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setToolTipClicked(true);
+                    setSifreTooltip(true);
                   }}
                 />
                 <div
