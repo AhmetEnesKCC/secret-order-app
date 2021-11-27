@@ -12,8 +12,9 @@ module.exports = {
         "main-purple": "#9312C1",
         "main-orange": "#EFB551",
         "main-yellow": "#FFFF06",
-      },
-    },
+        "main-blue-v2" :"#3BA3FE" 
+         }, 
+    },   
   },
   variants: {
     extend: {},

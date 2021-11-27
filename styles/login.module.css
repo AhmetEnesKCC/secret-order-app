@@ -1,5 +1,5 @@
 .container {
-  @apply w-full h-screen min-h-screen lg:min-h-[900px]  flex justify-between;
+  @apply w-full min-h-screen max-h-screen lg:min-h-[900px]  flex justify-between;
 }
 
 .left_container {

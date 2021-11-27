@@ -1,0 +1,120 @@
+.container {
+  @apply w-full min-h-[1000px] bg-gradient-to-b from-main-blue-v2 to-[#49A4F3] py-20;
+}
+
+.content {
+  @apply w-[450px] mx-auto;
+}
+
+.title {
+  @apply font-main text-left text-3xl text-white;
+}
+
+.content p {
+  @apply text-white text-xl text-opacity-80 m-0 mb-8;
+}
+
+.form {
+  @apply w-[450px]  py-10 px-10 bg-white rounded-xl;
+}
+
+.form_type {
+  @apply flex h-6 w-full justify-between items-center mb-20;
+}
+
+.form_type_button {
+  @apply flex items-center justify-center w-[160px] bg-[#ececec] py-3  rounded-lg font-bold text-[#707070];
+}
+
+.form_type_button[data-type="active"] {
+  @apply text-main-blue-v2 bg-[#f8f8f8] shadow-xl cursor-default;
+}
+
+.form_type_button:not([data-type="active"]):hover {
+  @apply transition duration-500 transform scale-110;
+}
+
+.form input {
+  @apply bg-[#EFEFEF] border-[1px] border-[#B5B3B3]  py-4 px-3 outline-none rounded-md;
+}
+
+.form input:focus {
+  @apply !border-main-blue-v2;
+}
+
+.form label {
+  @apply text-[#707070] block text-xl mt-10 mb-3;
+}
+
+.email_input input {
+  @apply w-full;
+}
+
+.phone_input .phone_group {
+  @apply flex justify-between w-full items-center self-center gap-x-6;
+  height: fit-content;
+}
+
+.phone_input .phone_group .select {
+  @apply self-stretch min-w-[50px] bg-[#F3EFEF] text-center relative font-bold outline-none flex flex-col;
+  appearance: none;
+}
+
+.phone_input .phone_group .down_arrow {
+  color: black;
+
+  width: 100%;
+  bottom: -2px;
+  left: 0;
+  text-align: center;
+  @apply text-base  py-[2px] bg-[#e5e5e5];
+}
+
+.phone_input .phone_group .down_arrow svg {
+  @apply text-xs mx-auto;
+}
+
+.phone_input .phone_group select {
+  @apply self-stretch min-w-[50px] bg-[#F3EFEF] flex-1 text-center relative font-bold outline-none;
+  appearance: none;
+}
+
+.phone_input .phone_group input {
+  @apply w-full;
+  appearance: none;
+}
+
+.pinInputs {
+  @apply flex justify-between w-full;
+}
+
+.pinInputs .pinInputContainer {
+  @apply w-[40%];
+}
+
+.pinInputs div .pinInput {
+  @apply w-full relative;
+}
+
+.pinInputs div .pinInput input {
+  @apply w-full;
+}
+
+.pinInputs div .pinInput .svg {
+  @apply text-2xl text-[#707070] absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer;
+}
+
+.pinInputs div .pinInput .svg svg {
+  @apply pointer-events-none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.pinInputs div input::-webkit-outer-spin-button,
+.pinInputs div input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.submitButton {
+  @apply bg-main-blue-v2 text-white w-full mt-20 py-4 px-2 text-xl rounded-xl hover:brightness-110;
+}
