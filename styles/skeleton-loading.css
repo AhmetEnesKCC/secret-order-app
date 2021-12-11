@@ -1,0 +1,16 @@
+@keyframes skeleton-loading {
+  0% {
+    background-position: 0;
+    opacity: 0.4;
+  }
+
+  100% {
+    background-position: 400px;
+    opacity: 1;
+  }
+}
+
+.skeleton-loading {
+  animation: skeleton-loading 1s linear infinite alternate forwards;
+  background: #373737;
+}

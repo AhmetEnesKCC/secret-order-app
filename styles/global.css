@@ -4,9 +4,16 @@
   @apply box-border;
 }
 
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
+
 @font-face {
   font-family: "Poppins";
-  src: url("./assets/fonts/Poppins-Regular.ttf");
+  src: url("../public/assets/fonts/Poppins-Regular.ttf");
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -19,4 +26,8 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+:root {
+  --skeleton-element-color: rgba(88, 26, 26, 0.17) !important;
 }

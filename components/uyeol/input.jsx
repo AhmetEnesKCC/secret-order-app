@@ -1,19 +1,28 @@
 import { useEffect } from "react";
 import useInput from "../../hooks/useInput";
 
-const Input = () => {
-  const [inputValue, setInputValue, inputRef] = useInput();
+const Input = (props) => {
+  const { ref, setter, type, value } = useInput();
 
   useEffect(() => {
-    props?.onVelueChange?.(inputValue);
-  }, [inputValue]);
+    props?.whenValueChange?.(value);
+  }, [value]);
+
+  useEffect(() => {
+    props?.getProperties?.({
+      ref,
+      setter,
+      value,
+      type,
+    });
+  }, []);
 
   return (
     <input
-      ref={inputRef}
+      ref={ref}
       {...props}
       onChange={(e) => {
-        setInputValue(e.target.value);
+        setter(e.target.value);
       }}
       children={null}
     />
@@ -29,18 +38,19 @@ Input.Phone = (props) => {
     <Input
       type="tel"
       onChange={(e) => {
-        return e.target.value.length < 10;
+        return e.target.value < props.maxLength;
       }}
       {...props}
     />
   );
 };
 
-Input.Pin = (maxLength) => {
+Input.Pin = (props) => {
   return (
     <Input
+      type="password"
       onChange={(e) => {
-        return e.target.value.length < maxLength;
+        return e.target.value.length < props.maxLength;
       }}
       {...props}
     />

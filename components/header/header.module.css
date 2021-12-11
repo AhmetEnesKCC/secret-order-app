@@ -1,0 +1,54 @@
+.headerContainer {
+  @apply flex flex-col fixed w-full z-50;
+}
+
+.container {
+  @apply py-4 px-1 lg:px-20 w-full;
+}
+
+.header {
+  @apply flex  items-center w-[80%] justify-between mx-auto;
+}
+
+.logo {
+  @apply w-[80px]  flex flex-col items-center scale-75;
+}
+
+.logo span {
+  @apply text-xl font-bold font-main;
+}
+
+.link_container {
+  @apply flex items-center justify-between space-x-10;
+}
+
+.link_container a {
+  @apply font-semibold font-main hover:scale-105 hover:brightness-90 transition;
+  color: inherit;
+}
+
+.link_container a.box {
+  @apply bg-opacity-10 px-2 py-1 text-xl text-green-700;
+}
+
+.subHeader {
+  @apply py-2  w-full bg-main-orange px-10 lg:px-[calc(10%+4rem)] flex justify-between flex-row;
+}
+
+.subHeader .currency {
+  @apply text-white flex space-x-2 lg:space-x-4 items-center font-bold text-base  lg:text-xl;
+}
+
+.subHeader .currency.up svg,
+.subHeader .currency.up span:nth-child(2) {
+  @apply text-red-800;
+}
+
+.subHeader .currency.up svg {
+  @apply rotate-180;
+}
+
+.subHeader .currency.down svg,
+.subHeader .currency.down span:nth-child(2) {
+  @apply text-green-800;
+}

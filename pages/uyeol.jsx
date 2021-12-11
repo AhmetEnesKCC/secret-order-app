@@ -5,37 +5,38 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { BsQuestionCircle } from "react-icons/bs";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import useNotification from "../hooks/useNotification";
-const Uyeol = () => {
+import Input from "../components/uyeol/input";
+import Head from "next/head";
+
+const NotificationElement = () => {
+  return (
+    <div className="flex flex-col">
+      <p className="m-0 text-black text-lg">Ornek: </p>
+      <div className="mx-auto p-2 border-2 shadow-md">123456</div>
+    </div>
+  );
+};
+
+const Uyeol = ({ notification_props }) => {
+  useEffect(() => {
+    notification_props.set(
+      "Ufak bir uyari",
+      "Pininiz 6 sayidan olusmalidir",
+      NotificationElement
+    );
+  }, []);
+
+  const [formType, setFormType] = useState("giris_yap");
+
   const [phoneCodes, setPhoneCodes] = useState([]);
 
-  const [phoneValue, setPhoneValue] = useState("");
-  const [phoneInputValue, setPhoneInputValue] = useState("");
-
-  const pinInput1 = useRef(null);
-  const pinInput2 = useRef(null);
+  const [pin1Type, setPin1Type] = useState("password");
+  const [pin2Type, setPin2Type] = useState("password");
+  const [girisPinType, setGirisPinType] = useState("password");
 
   // TODO
 
   // Fetch Country Codes whenever arrive to better connection
-
-  // useEffect(() => {
-  //     Axios.get("http://country.io/phone.json").then(res => setPhoneCodes(res.data))
-  // })
-
-  const handlePinInput = (e) => {
-    if (e.target.value.length > 6) {
-      e.target.value = e.target.value.slice(0, -1);
-    } else if (!e.target.value[e.target.value.length - 1].match(/\d/)) {
-      e.target.value = e.target.value.slice(0, -1);
-    }
-  };
-
-  const handleInputType = (self, inputRef) => {
-    inputRef.current.setAttribute(
-      "type",
-      inputRef.current.getAttribute("type") == "number" ? "password" : "number"
-    );
-  };
 
   function isNumber(num) {
     return /\d/.test(num);
@@ -43,26 +44,44 @@ const Uyeol = () => {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Ulastir.com - Üye Ol</title>
+      </Head>
       <div className={styles.content}>
         <h2 className={styles.title}>Merhaba</h2>
         <p>Ulastir.com ' a giris yap veya kayit ol</p>
-        <form action="" className={styles.form}>
+        <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
           <div className={styles.form_type}>
-            <button data_name="giris_yap" className={styles.form_type_button}>
+            <button
+              data_name="giris_yap"
+              onClick={(e) => {
+                setFormType("giris_yap");
+              }}
+              className={styles.form_type_button}
+              data-type={formType === "giris_yap" && "active"}
+            >
               Giris Yap
             </button>
             <button
               data-name="kayit_ol"
-              data-type={"active"}
+              data-type={formType === "kayit_ol" && "active"}
               className={styles.form_type_button}
+              onClick={(e) => {
+                setFormType("kayit_ol");
+              }}
             >
               Kayit Ol
             </button>
           </div>
           <div className={styles.email_input}>
             <label htmlFor="">E-posta</label>
-            <input type="email" />
+            <Input.Email
+              whenValueChange={(val) => {
+                console.log(val);
+              }}
+            />
           </div>
+
           <div className={styles.phone_input}>
             <label htmlFor="">Telefon Numarasi</label>
             <div className={styles.phone_group}>
@@ -79,28 +98,7 @@ const Uyeol = () => {
                   <MdOutlineKeyboardArrowDown />
                 </div>
               </div>
-
-              <input
-                onKeyDown={(e) => {
-                  if (e.code == "Backspace" || e.code == "Delete") {
-                    setPhoneValue(phoneValue.slice(0, -1));
-                  }
-                }}
-                onInput={(e) => {
-                  let value = e.target.value;
-                  let value_length = value.length;
-
-                  if (
-                    phoneInputValue[phoneInputValue.length - 1] === ")" ||
-                    isNumber(value[value_length - 1])
-                  ) {
-                    setPhoneValue(`${phoneValue}${value[value_length - 1]}`);
-                  }
-                }}
-                type="text"
-                value={phoneInputValue}
-                pattern="\d*"
-              />
+              <Input.Phone maxLength={10} />
             </div>
             <div className={styles.pinInputs}>
               <div className={styles.pinInputContainer}>
@@ -108,48 +106,50 @@ const Uyeol = () => {
                   <span>Pin</span>
                   <BsQuestionCircle
                     onClick={() => {
-                      const {} = useNotification(
-                        "Ufak bir bilgilendirme",
-                        "Pininiz 6 sayidan olusmalidir."
-                      );
+                      notification_props.show();
                     }}
-                    className="inline-block"
+                    className="inline-block cursor-pointer"
                   />
                 </label>
+
                 <div className={styles.pinInput}>
-                  <input
-                    type="number"
-                    ref={pinInput1}
-                    onInput={handlePinInput}
-                  />
+                  <Input.Pin maxLength={6} type={pin1Type} />
                   <div
                     className={styles.svg}
-                    onClick={(e) => handleInputType(e, pinInput1)}
+                    onClick={(e) =>
+                      setPin1Type(pin1Type === "password" ? "text" : "password")
+                    }
                   >
-                    <AiFillEye />
+                    {pin1Type === "password" ? (
+                      <AiFillEye />
+                    ) : (
+                      <AiFillEyeInvisible />
+                    )}
                   </div>
                 </div>
               </div>
               <div className={styles.pinInputContainer}>
                 <label>Pin - Tekrar</label>
                 <div className={styles.pinInput}>
-                  <input
-                    type="number"
-                    ref={pinInput2}
-                    max="999999"
-                    onInput={handlePinInput}
-                  />
+                  <Input.Pin maxLength={6} type={pin2Type} />
                   <div
                     className={styles.svg}
-                    onClick={(e) => handleInputType(e, pinInput2)}
+                    onClick={(e) =>
+                      setPin2Type(pin2Type === "password" ? "text" : "password")
+                    }
                   >
-                    <AiFillEye />
+                    {pin2Type === "password" ? (
+                      <AiFillEye />
+                    ) : (
+                      <AiFillEyeInvisible />
+                    )}
                   </div>
                 </div>
               </div>
             </div>
-            <button className={styles.submitButton}>UYE OL</button>
           </div>
+
+          <button className={styles.submitButton}>UYE OL</button>
         </form>
       </div>
     </div>
@@ -157,3 +157,17 @@ const Uyeol = () => {
 };
 
 export default Uyeol;
+
+export const getStaticProps = () => {
+  return {
+    props: {
+      header: {
+        container: "bg-white",
+        links: "!text-main-blue-v2",
+        logo: "text-main-blue-v2",
+        box_link: "bg-gray-500",
+        show_sub: false,
+      },
+    },
+  };
+};
