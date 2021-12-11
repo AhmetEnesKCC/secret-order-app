@@ -82,7 +82,7 @@ export default function Home() {
             scrollMarginTop: "100px",
           }}
         >
-          <h3 className="text-main-orange font-main font-bold text-6xl text-center">
+          <h3 className="text-main-orange font-main font-bold text-4xl lg:text-6xl text-center">
             Rakamlarla Biz
           </h3>
           <div className="grid grid-cols-1 lg:grid-cols-3 text-center mt-40 space-y-40 lg:space-y-0">
@@ -99,7 +99,7 @@ export default function Home() {
           </div>
         </div>
         <div className="w-full py-40 bg-main-blue-v2 px-10  lg:px-[calc(10%+4rem)] relative min-h-[2000px] mt-40">
-          <h3 className="text-white text-5xl font-main font-extrabold pb-40">
+          <h3 className="text-white text-4xl lg:text-5xl font-main font-extrabold pb-40">
             2H1G ile neden biz
           </h3>
           <div className="absolute top-[500px] left-[100px] text-[500px] z-0 text-white text-opacity-10 select-none">
